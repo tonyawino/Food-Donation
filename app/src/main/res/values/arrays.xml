@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="measurements">
+        <item>Cups</item>
+        <item>Liters</item>
+        <item>Pounds</item>
+        <item>Kilograms</item>
+        <item>Pieces</item>
+    </string-array>
+    <string-array name="donation">
+        <item>Donation</item>
+        <item>Request</item>
+    </string-array>
+    <string-array name="cooked">
+        <item>Cooked</item>
+        <item>Uncooked</item>
+        <item>Both</item>
+    </string-array>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_donations"
+            android:title="Donations" />
+        <item
+            android:id="@+id/nav_requests"
+            android:title="Donation Requests" />
+    </group>
+
+    <item android:title="Me">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_my_donations"
+                    android:title="My Donations" />
+                <item
+                    android:id="@+id/nav_my_requests"
+                    android:title="My Donation Requests" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

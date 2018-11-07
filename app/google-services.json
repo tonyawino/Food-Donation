@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "974188497661",
-    "firebase_url": "https://fooddonation-dfc8c.firebaseio.com",
-    "project_id": "fooddonation-dfc8c",
-    "storage_bucket": "fooddonation-dfc8c.appspot.com"
+    "project_number": "1048785308055",
+    "firebase_url": "https://fooddonation-21977.firebaseio.com",
+    "project_id": "fooddonation-21977",
+    "storage_bucket": "fooddonation-21977.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:974188497661:android:b74325ba1373c178",
+        "mobilesdk_app_id": "1:1048785308055:android:b74325ba1373c178",
         "android_client_info": {
           "package_name": "com.example.android.fooddonation"
         }
       },
       "oauth_client": [
         {
-          "client_id": "974188497661-13412hag4b2hnmcamjgkekc8kcsmqk02.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.android.fooddonation",
-            "certificate_hash": "f71dd0db42ff77e8a018bda28a74f85b877388f3"
-          }
-        },
-        {
-          "client_id": "974188497661-9c9502h7ft5nkunu9att116ql7ndsjo6.apps.googleusercontent.com",
+          "client_id": "1048785308055-467k52aovb5nq4b8pjav6csj7kgco59g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC4_dAJHlNeeX4gDrRDBEvNhuE68og-Kpg"
+          "current_key": "AIzaSyBK1i_ikeVGzybS9mu9Pf3F42u2CECwMDY"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "974188497661-9c9502h7ft5nkunu9att116ql7ndsjo6.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

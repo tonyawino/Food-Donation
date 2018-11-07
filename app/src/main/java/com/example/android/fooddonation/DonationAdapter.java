@@ -1,6 +1,5 @@
 package com.example.android.fooddonation;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -20,9 +19,11 @@ import java.util.List;
 
 public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHolder> {
     public static final String DONATION_ID = "Donation Id";
+    public static final String DONATION_OWNER = "Donation Owner";
     private final Context context;
     private final List<Item> items;
-    private DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("users");
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
     public DonationAdapter(Context context, List<Item> items) {
         this.context = context;
         this.items = items;
@@ -31,7 +32,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHo
     @NonNull
     @Override
     public DonationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,7 +41,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHo
         databaseReference.child(items.get(position).getUserId()).child("location").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                holder.location.setText((String)dataSnapshot.getValue());
+                holder.location.setText((String) dataSnapshot.getValue());
             }
 
             @Override
@@ -53,8 +54,9 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, DonationActivity.class);
+                Intent intent = new Intent(context, DonationActivity.class);
                 intent.putExtra(DONATION_ID, items.get(position).getId());
+                intent.putExtra(DONATION_OWNER, items.get(position).getUserId());
                 context.startActivity(intent);
 
             }
@@ -69,10 +71,11 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
         TextView location;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            location=itemView.findViewById(R.id.text_item_location);
-            foodName=itemView.findViewById(R.id.text_item_food);
+            location = itemView.findViewById(R.id.text_item_location);
+            foodName = itemView.findViewById(R.id.text_item_food);
         }
     }
 }

@@ -10,7 +10,7 @@ public class Donation {
     private boolean pick;
     private String measure;
 
-    public Donation(){
+    public Donation() {
 
     }
 

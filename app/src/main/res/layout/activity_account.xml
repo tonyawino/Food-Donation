@@ -25,7 +25,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
             <EditText
-                android:id="@+id/editText_sign_phone"
+                android:id="@+id/editText_account_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/editText_sign_lastName"
+                android:id="@+id/editText_account_lastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/editText_sign_firstName"
+                android:id="@+id/editText_account_firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_sign_get_location">
 
             <EditText
-                android:id="@+id/editText_sign_email"
+                android:id="@+id/editText_account_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,59 +113,8 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
-
-            <EditText
-                android:id="@+id/editText_sign_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                tools:layout_editor_absoluteX="71dp"
-                tools:layout_editor_absoluteY="156dp" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
-
-            <EditText
-                android:id="@+id/editText_sign_password_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                tools:layout_editor_absoluteX="71dp"
-                tools:layout_editor_absoluteY="156dp" />
-        </android.support.design.widget.TextInputLayout>
-
         <Button
-            android:id="@+id/button_sign_register"
+            android:id="@+id/button_account_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -173,51 +122,14 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="register"
+            android:text="update "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
-
-        <TextView
-            android:id="@+id/textView_sign_forgot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:text="Forgot your password?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/holo_green_dark"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_sign_register" />
-
-        <TextView
-            android:id="@+id/textView_sign_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="Already have an account?Log in"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_sign_forgot" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_account_changePass" />
 
         <ImageView
-            android:id="@+id/imageView_sign_location"
+            android:id="@+id/imageView_account_location"
             android:layout_width="46dp"
             android:layout_height="35dp"
             android:layout_marginLeft="8dp"
@@ -229,7 +141,7 @@
             app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
         <TextView
-            android:id="@+id/textView_sign_location"
+            android:id="@+id/textView_account_location"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
@@ -242,7 +154,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_sign_location"
+            app:layout_constraintStart_toEndOf="@+id/imageView_account_location"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
         <TextView
@@ -253,10 +165,10 @@
             android:layout_marginStart="8dp"
             android:text="Location"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_sign_location" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView_account_location" />
 
         <ProgressBar
-            android:id="@+id/progressBar_sign"
+            android:id="@+id/progressBar_account"
             style="?android:attr/progressBarStyle"
             android:layout_width="119dp"
             android:layout_height="125dp"
@@ -266,10 +178,27 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_sign_login"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_account_changePass"
+            android:layout_width="225dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Change Password"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

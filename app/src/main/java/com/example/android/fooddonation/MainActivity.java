@@ -4,22 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +34,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final int NAV_MY_REQUESTS = R.id.nav_my_requests;
     public static final int NAV_MY_DONATIONS = R.id.nav_my_donations;
     public static final int NAV_REQUESTS = R.id.nav_requests;
     public static final int NAV_DONATIONS = R.id.nav_donations;
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private TextView textViewEmpty;
+    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView=findViewById(R.id.list_donations);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(MainActivity.this, new LinearLayoutManager(MainActivity.this).getOrientation());
+        firebaseAuth = FirebaseAuth.getInstance();
+        recyclerView = findViewById(R.id.list_donations);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(MainActivity.this, new LinearLayoutManager(MainActivity.this).getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -73,9 +76,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(NAV_DONATIONS);
-        selectedNav=NAV_DONATIONS;
-        progressBar=findViewById(R.id.progressBar_list);
-        textViewEmpty=findViewById(R.id.text_list_empty);
+        selectedNav = NAV_DONATIONS;
+        progressBar = findViewById(R.id.progressBar_list);
+        textViewEmpty = findViewById(R.id.text_list_empty);
+
 
     }
 
@@ -90,13 +94,16 @@ public class MainActivity extends AppCompatActivity
     private void getData() {
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
-        Query finalReference=databaseReference.orderByChild("donation");
-        switch (selectedNav){
+        Query finalReference = databaseReference.orderByChild("donation");
+        switch (selectedNav) {
             case NAV_DONATIONS:
-                finalReference=databaseReference.orderByChild("donation").equalTo(true);
+                finalReference = databaseReference.orderByChild("donation").equalTo(true);
                 break;
             case NAV_REQUESTS:
-                finalReference=databaseReference.orderByChild("donation").equalTo(false);
+                finalReference = databaseReference.orderByChild("donation").equalTo(false);
+                break;
+            case NAV_MY_DONATIONS:
+                finalReference = databaseReference.orderByChild("userId").equalTo(firebaseAuth.getUid());
                 break;
 
         }
@@ -104,10 +111,10 @@ public class MainActivity extends AppCompatActivity
         finalReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<Item> names=new ArrayList<>();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Donation donation=snapshot.getValue(Donation.class);
-                    Item item =new Item();
+                List<Item> names = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Donation donation = snapshot.getValue(Donation.class);
+                    Item item = new Item();
                     item.setFood(donation.getFood());
                     item.setId(snapshot.getKey());
                     item.setUserId(donation.getUserId());
@@ -116,12 +123,11 @@ public class MainActivity extends AppCompatActivity
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setAdapter(new DonationAdapter(MainActivity.this, names));
                 recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                if (names.isEmpty()){
+                if (names.isEmpty()) {
                     textViewEmpty.setText("No items found");
                     textViewEmpty.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     textViewEmpty.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                 }
@@ -158,8 +164,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, AccountActivity.class));
             return true;
+        } else if (id == R.id.action_sign_out) {
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -168,8 +178,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        selectedNav=id;
-        switch (id){
+        selectedNav = id;
+        switch (id) {
             case NAV_DONATIONS:
                 setTitle("Food Donations");
                 getData();
@@ -180,10 +190,6 @@ public class MainActivity extends AppCompatActivity
                 break;
             case NAV_MY_DONATIONS:
                 setTitle("My Donations");
-                getData();
-                break;
-            case NAV_MY_REQUESTS:
-                setTitle("My Donation Requests");
                 getData();
                 break;
         }

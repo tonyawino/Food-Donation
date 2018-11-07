@@ -5,16 +5,18 @@ public class User {
     private String lastName;
     private String location;
     private String contact;
+    private String coordinates;
 
-    public User(){
+    public User() {
 
     }
 
-    public User(String firstName, String lastName, String location, String contact) {
+    public User(String firstName, String lastName, String location, String contact, String coordinates) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.location = location;
         this.contact = contact;
+        this.coordinates = coordinates;
     }
 
     public String getFirstName() {
@@ -34,4 +36,7 @@ public class User {
     }
 
 
+    public String getCoordinates() {
+        return coordinates;
+    }
 }
